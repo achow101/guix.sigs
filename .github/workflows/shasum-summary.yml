@@ -15,9 +15,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: show changed files
         run: |
-          git diff --no-commit-id --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+          git diff --no-commit-id --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}
       - name: run shasum-summary
-        run: python3 contrib/shasum-summary/main.py ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} > comment
+        run: python3 contrib/shasum-summary/main.py ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} > comment
       - name: show comment
         run: cat comment
       - name: Store issue number
