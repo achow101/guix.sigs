@@ -14,9 +14,9 @@ jobs:
           fetch-depth: 0
       - name: show changed files
         run: |
-          git diff --no-commit-id --name-only ${{ github.event.pull_request.base.sha }}...${GITHUB_SHA}
+          git diff --no-commit-id --name-only ${{ github.event.pull_request.base.sha }}...HEAD
       - name: run shasum-summary
-        run: python3 contrib/shasum-summary/main.py ${{ github.event.pull_request.base.sha }}...${GITHUB_SHA} > comment
+        run: python3 contrib/shasum-summary/main.py ${{ github.event.pull_request.base.sha }}...HEAD > comment
       - name: show comment
         run: cat comment
       - name: Store issue number
